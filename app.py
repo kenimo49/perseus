@@ -25,7 +25,7 @@ killword = ""
 while True:
     strTemp = ""
     for line in data.split('\n'):
-        data = data + sock.recv(1024)
+        data = data + sock.recv(1024).decode('utf-8')
         index = line.find('WORD="')
         print(f'line: {line}')
         if index != -1:
