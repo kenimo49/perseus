@@ -33,12 +33,13 @@ while True:
             if index != -1:
                 line = line[index + 6:line.find('"', index + 6)]
                 strTemp += str(line)
-
             if strTemp == 'おはよう':
                 if killword != 'おはよう':
                     print(f"Result: {strTemp}")
                     # jtalk_say('おはよう')
                     print("<<<please speak>>>")
                     killword = "おはよう"
+            elif strTemp != '':
+                print(f'strTemp: {strTemp}')
         else:
             data += str(sock.recv(1024).decode('utf-8'))

@@ -90,6 +90,6 @@ cp -b ~/workspace/julius/gramtools/dfa_minimize/dfa_minimize ~/workspace/julius/
 cd ~/workspace/
 python3 -m venv venv
 source venv/bin/activate
-pip3 install numpy --upgrade
 export PYTHONPATH="/usr/lib/python3/dist-packages"
+chmod 777 julius_start.sh
 ```
