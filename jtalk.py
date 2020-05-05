@@ -18,6 +18,5 @@ def jtalk(t):
     wr = subprocess.Popen(aplay)
 
 
-def jtalk_say(text):
-    d = datetime.now()
-    jtalk(text)
+def text_jtalk():
+    jtalk('テスト再生です')

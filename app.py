@@ -8,7 +8,7 @@ import numpy as np
 from numpy.random import *
 import time
 
-from jtalk import jtalk_say
+import jtalk
 
 host = "localhost"
 port = 10500
@@ -22,12 +22,12 @@ sock.connect((host, port))
 data = ""
 killword = ""
 
+print("<<<please speak>>>")
 while True:
     strTemp = ""
     for line in data.split('\n'):
         data = data + sock.recv(1024).decode('utf-8')
         index = line.find('WORD="')
-        print(f'line: {line}')
         if index != -1:
             line = line[index + 6:line.find('"', index + 6)]
             if line != "[s]":
@@ -36,7 +36,7 @@ while True:
         if strTemp == 'おはよう':
             if killword != 'おはよう':
                 print(f"Result: {strTemp}")
-                # jtalk_say('おはよう')
+                jtalk.jtalk('おはよう')
                 print("<<<please speak>>>")
                 killword = "おはよう"
         elif strTemp != '':

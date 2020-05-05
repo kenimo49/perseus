@@ -93,3 +93,35 @@ source venv/bin/activate
 export PYTHONPATH="/usr/lib/python3/dist-packages"
 chmod 777 julius_start.sh
 ```
+
+## 起動時に自動で設定
+```
+vim ~/.bashrc
+```
+.bashrc(起動時に自動実行)
+```
+export PYTHONPATH="/usr/lib/python3/dist-packages"
+```
+
+マイクの設定
+```
+sudo vim /etc/profile
+```
+
+/etc/profile(最終行)
+```
+export ALSADEV="plughw:0,0"
+```
+
+※サウンドの確認
+```
+$ arecord -l
+
+**** ハードウェアデバイス CAPTURE のリスト ****
+カード 0: Device [USB PnP Sound Device], デバイス 0: USB Audio [USB Audio]
+  サブデバイス: 1/1
+  サブデバイス #0: subdevice #0
+```
+
+## openJtalkの設定
+[openJtalkの設定](https://qiita.com/kkoba84/items/b828229c374a249965a9)
