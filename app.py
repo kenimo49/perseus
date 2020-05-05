@@ -21,18 +21,20 @@ sock.connect((host, port))
 
 data = ""
 killword = ""
-strTemp = ""
 
 while True:
     while True:
-        if '</RECOGOUT>\n.' in data:
-            # data = data + sock.recv(1024)
-            strTemp = ""
+        # if '</RECOGOUT>\n.' in data:
+        #     # data = data + sock.recv(1024)
+        strTemp = ""
         for line in data.split('\n'):
             index = line.find('WORD="')
+            print(f'line: {line}')
             if index != -1:
                 line = line[index + 6:line.find('"', index + 6)]
-                strTemp += str(line)
+                if line != "[s]":
+                    strTemp = strTemp + line
+
             if strTemp == 'おはよう':
                 if killword != 'おはよう':
                     print(f"Result: {strTemp}")
