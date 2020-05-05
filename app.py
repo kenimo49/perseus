@@ -8,6 +8,8 @@ import numpy as np
 from numpy.random import *
 import time
 
+from jtalk import jtalk_say
+
 host = "localhost"
 port = 10500
 
@@ -19,6 +21,7 @@ sock.connect((host, port))
 
 data = ""
 killword = ""
+strTemp = ""
 
 while True:
     while True:
@@ -33,8 +36,8 @@ while True:
 
             if strTemp == 'おはよう':
                 if killword != 'おはよう':
-                    print("Result: " + strTemp)
-                    # os.system("aplay '/home/pi/Music/byebye.wav'")
+                    print(f"Result: {strTemp}")
+                    # jtalk_say('おはよう')
                     print("<<<please speak>>>")
                     killword = "おはよう"
         else:

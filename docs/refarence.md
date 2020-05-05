@@ -85,3 +85,11 @@ cp -b ~/workspace/julius/gramtools/dfa_minimize/dfa_minimize ~/workspace/julius/
 ~/workspace/julius/julius/julius -C ~/workspace/julius-kit/dictation-kit-v4.4/am-gmm.jconf -nostrip -gram ~/workspace/dict/word -input mic
 ```
 
+## python環境の構築
+```
+cd ~/workspace/
+python3 -m venv venv
+source venv/bin/activate
+pip3 install numpy --upgrade
+export PYTHONPATH="/usr/lib/python3/dist-packages"
+```
