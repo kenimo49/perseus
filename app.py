@@ -23,11 +23,9 @@ data = ""
 killword = ""
 
 while True:
-    while (string.find(data, "\n.") == -1):
-        data = data + sock.recv(1024)
-
     strTemp = ""
     for line in data.split('\n'):
+        data = data + sock.recv(1024)
         index = line.find('WORD="')
         print(f'line: {line}')
         if index != -1:
