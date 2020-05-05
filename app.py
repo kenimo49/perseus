@@ -23,26 +23,25 @@ data = ""
 killword = ""
 
 while True:
-    while True:
-        # if '</RECOGOUT>\n.' in data:
-        #     # data = data + sock.recv(1024)
+    while (string.find(data, "\n.") == -1):
         data = data + sock.recv(1024)
-        strTemp = ""
-        for line in data.split('\n'):
-            index = line.find('WORD="')
-            print(f'line: {line}')
-            if index != -1:
-                line = line[index + 6:line.find('"', index + 6)]
-                if line != "[s]":
-                    strTemp = strTemp + line
 
-            if strTemp == 'おはよう':
-                if killword != 'おはよう':
-                    print(f"Result: {strTemp}")
-                    # jtalk_say('おはよう')
-                    print("<<<please speak>>>")
-                    killword = "おはよう"
-            elif strTemp != '':
-                print(f'strTemp: {strTemp}')
-        else:
-            data += str(sock.recv(1024).decode('utf-8'))
+    strTemp = ""
+    for line in data.split('\n'):
+        index = line.find('WORD="')
+        print(f'line: {line}')
+        if index != -1:
+            line = line[index + 6:line.find('"', index + 6)]
+            if line != "[s]":
+                strTemp = strTemp + line
+
+        if strTemp == 'おはよう':
+            if killword != 'おはよう':
+                print(f"Result: {strTemp}")
+                # jtalk_say('おはよう')
+                print("<<<please speak>>>")
+                killword = "おはよう"
+        elif strTemp != '':
+            print(f'strTemp: {strTemp}')
+    else:
+        data += str(sock.recv(1024).decode('utf-8'))
