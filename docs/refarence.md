@@ -125,3 +125,13 @@ $ arecord -l
 
 ## openJtalkの設定
 [openJtalkの設定](https://qiita.com/kkoba84/items/b828229c374a249965a9)
+
+## 音声が出力できるように設定
+オーディオプラグからの出力に設定
+```
+sudo apt-get install pulseaudio
+amixer cset numid=3 1
+sudo reboot
+alsamixer
+speaker-test -t sine -f 600
+```
